@@ -1,0 +1,57 @@
+syntax = "proto3";
+option go_package = "./;msg";
+package PB;
+
+message Room{
+  int32 id = 1;
+  int32 plotId = 2;
+  //0:等待进入，1：已满，2：进行中
+  int32 state = 3;
+  repeated Role roles = 4;
+  //房间创建者玩家Id
+  int32 houseOwnerId = 5;
+}
+
+message Role{
+  int32 id = 1;
+  int32 member = 2;
+  bool ready = 3;
+}
+
+message Task{
+  int32 id = 1;
+}
+
+message Vector3{
+  float x = 1;
+  float y = 2;
+  float z = 3;
+}
+
+message Entity{
+  Vector3 position = 1;
+  Vector3 rotation = 2;
+}
+
+message Command{
+  string obj = 1;
+  string cmd = 2;
+  string args = 3;
+}
+
+message TaskProcess{
+  int32 task = 1;
+  repeated int32 goals = 2;
+  repeated int32 finished = 3;  
+}
+
+message Dress{
+  int32 roleId = 1;
+  int32 partId = 2;
+  string equipId = 3;
+}
+
+message Branch{
+  int32 roleId = 1;
+  int32 branchId = 2;
+}
